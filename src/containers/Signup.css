@@ -1,0 +1,19 @@
+.signup .signup-block {
+  margin: 20px auto 0;
+  width: 340px;
+  height: 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.signup .signup-block form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.signup .signup-block form div {
+  display: flex;
+}
