@@ -88,19 +88,76 @@ const Header = ({
         headers
       );
       setSearchResults(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
   return (
-    <header className="container" style={{ height: userToken && "120px" }}>
-      <Link to="/">
-        {" "}
-        <div className="logo">
-          <img src={logo} alt="vinted" />
+    <header className="container">
+      <div className="upper-header">
+        <Link to="/">
+          {" "}
+          <div className="logo">
+            <img src={logo} alt="vinted" />
+          </div>
+        </Link>
+        <div className="filter-search">
+          <div className="search">
+            <FontAwesomeIcon className="search-icon" icon="search" />
+            <input
+              value={searchedText}
+              type="search"
+              placeholder="Rechercher des articles"
+              onChange={handlerSearch}
+            />
+          </div>
+          <div className="filter">
+            <span>
+              <span>Tier par prix: </span>
+              <input type="checkbox" onClick={handlerCheckBox} />
+            </span>
+            <span>
+              <span>Prix entre :</span>
+              <div className="range-div">
+                <TwoLabeledRange
+                  setMaxMin={setMaxMin}
+                  handlerMAxMin={handlerMAxMin}
+                />
+              </div>
+            </span>
+          </div>
         </div>
-      </Link>
-      <div className="filter-search">
+        <nav
+          className="nav-bar"
+          style={{
+            justifyContent: userToken && "flex-end",
+            marginRight: userToken && "10px",
+          }}
+        >
+          {userToken ? (
+            <Link to="/">
+              {" "}
+              <button className="logout-btn" onClick={logout}>
+                Se deconnecter
+              </button>
+            </Link>
+          ) : (
+            <div>
+              <button onClick={() => setDisplayModalSignup(true)}>
+                S'inscrire
+              </button>
+              <button onClick={() => setDisplayModalLogin(true)}>
+                Se connecter
+              </button>
+            </div>
+          )}
+          <Link to="/publish">
+            <button className="btn-sell">Vends tes articles</button>
+          </Link>
+        </nav>
+      </div>
+      <div className="filter-search-hidden">
         <div className="search">
           <FontAwesomeIcon className="search-icon" icon="search" />
           <input
@@ -126,31 +183,6 @@ const Header = ({
           </span>
         </div>
       </div>
-      <nav
-        className="nav-bar"
-        style={{ justifyContent: userToken && "space-around" }}
-      >
-        {userToken ? (
-          <Link to="/">
-            {" "}
-            <button className="logout-btn" onClick={logout}>
-              Se deconnecter
-            </button>
-          </Link>
-        ) : (
-          <div>
-            <button onClick={() => setDisplayModalSignup(true)}>
-              S'inscrire
-            </button>
-            <button onClick={() => setDisplayModalLogin(true)}>
-              Se connecter
-            </button>
-          </div>
-        )}
-        <Link to="/publish">
-          <button className="btn-sell">Vends tes articles</button>
-        </Link>
-      </nav>
     </header>
   );
 };

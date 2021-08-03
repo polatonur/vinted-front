@@ -40,13 +40,19 @@ const Home = ({
     };
     fetchData();
   }, []);
-
-  let pubToDisplay = offers;
-  if (searchResults || searchedText) {
-    pubToDisplay = searchResults;
+  let pubToDisplay = {};
+  let pagination = 1;
+  console.log(searchResults);
+  if (!isLoading) {
+    if (offers) {
+      pubToDisplay = offers;
+    }
+    if (searchResults || searchedText) {
+      pubToDisplay = searchResults;
+    }
+    console.log(pubToDisplay);
+    pagination = Math.ceil(pubToDisplay.count / 10);
   }
-
-  let pagination = Math.ceil(pubToDisplay.count / 10);
   console.log(`is loading is =${isLoading}`);
   return isLoading ? (
     <div>En cours de chargement...</div>

@@ -65,6 +65,13 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 /*----------------------Header---------------------------- */
 header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 120px;
+}
+header .upper-header {
+  width: 100%;
   padding: 0 20px;
   height: 120px;
   background-color: white;
@@ -72,14 +79,14 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-header .logo img {
+header .upper-header .logo img {
+  margin-left: 20px;
   height: 45px;
   width: 104px;
   margin-right: 20px;
 }
-header .filter-search {
+header .upper-header .filter-search {
   padding-top: 20px;
-
   position: relative;
   height: 100%;
   width: 50%;
@@ -88,14 +95,14 @@ header .filter-search {
   justify-content: center;
   align-items: flex-start;
 }
-header .filter-search form {
+header .upper-header .filter-search form {
   width: 100%;
 }
-header .filter-search .filter > span {
+header .upper-header .filter-search .filter > span {
   display: flex;
   align-items: center;
 }
-header .filter-search .search {
+header .upper-header .filter-search .search {
   width: 100%;
   height: 40px;
   background-color: #f5f6f7;
@@ -269,7 +276,27 @@ nav .logout-btn {
   border: none;
   color: white;
 }
-
+.filter-search-hidden {
+  height: 60px;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.filter-search-hidden .search {
+  margin: 0 30px;
+  width: 40%;
+  height: 40px;
+  background-color: #f5f6f7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+}
+header .filter-search-hidden .filter > span {
+  display: flex;
+  align-items: center;
+}
 /*----------------------Hero---------------------------- */
 .hero {
   font-family: "vinted";
@@ -397,7 +424,7 @@ nav .logout-btn {
 .bottom-info > p {
   margin-top: 6px;
 }
-/*boom-page-nos  */
+/*bottom-page-nos  */
 .bottom-page-nos {
   display: flex;
   align-items: center;
@@ -421,7 +448,7 @@ nav .logout-btn {
   margin-bottom: 16px;
 }
 .publish {
-  width: 1280px;
+  width: 1180px;
 }
 .publish h1 {
   font-size: 24px;
@@ -677,17 +704,116 @@ footer a {
   text-align: center;
 }
 
-/* @media (max-width: 575.98px) {
+@media (max-width: 575.98px) {
+  .hero .hero-img img:last-child {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    right: -5px;
+    bottom: -3px;
+    z-index: 2;
+  }
+  .hero .middle-block {
+    display: none;
+  }
+  header {
+    height: 180px;
+  }
 }
 
-// Small devices (landscape phones, less than 768px)
+/* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  .hero .middle-block {
+    left: 5vw;
+    width: 40%;
+    height: 50%;
+    padding: 15px;
+  }
+  .middle-block h2 {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  .hero .hero-img img:last-child {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    right: -5px;
+    bottom: -6px;
+    z-index: 2;
+  }
+  .filter-search-hidden {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-// Medium devices (tablets, less than 992px)
+/* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
+  header {
+    height: 120px;
+  }
+  header .upper-header {
+    height: 60px;
+  }
+  header .upper-header .filter-search {
+    display: none;
+  }
+  .filter-search-hidden {
+    display: flex;
+  }
+  header .upper-header .nav-bar {
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+  .hero {
+    height: 50vw;
+    width: 100vw;
+    position: relative;
+  }
+  .hero .middle-block {
+    left: 5vw;
+    width: 40%;
+    height: 50%;
+    padding: 15px;
+  }
+  .middle-block h2 {
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+  .offer .contain {
+    height: 1250px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .offer main {
+    flex-direction: column;
+  }
+  .hero .hero-img img:last-child {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    right: -5px;
+    bottom: -6px;
+    z-index: 2;
+  }
 }
 
-// Large devices (desktops, less than 1200px)
+/* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
-} */
+  .publish {
+    width: 90vw;
+  }
+  header .upper-header .nav-bar {
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+  .hero .hero-img img:last-child {
+    position: absolute;
+    width: 1186px;
+    height: 60px;
+    right: -5px;
+    bottom: -6px;
+    z-index: 2;
+  }
+}
