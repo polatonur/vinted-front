@@ -1,21 +1,9 @@
-@font-face {
-  font-family: "vinted";
-  src: url("../assets/fonts/Font.woff2") format("woff2"),
-    url("../assets/fonts/Font.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 /*----------------------Global Rules---------------------------- */
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  font-family: "vinted";
+  font-family: "Maison neue book";
   background-color: inherit;
-}
-* {
-  font-family: "vinted";
 }
 a {
   text-decoration: none;
@@ -76,6 +64,7 @@ nav {
   justify-content: space-between;
 }
 nav button {
+  margin-left: 20px;
   border-radius: 10px;
   height: 40px;
   font-size: 12px;
@@ -84,7 +73,7 @@ nav button {
   border: 1px solid #2baeb7;
   color: #2baeb7;
 }
-nav button:last-child {
+nav .btn-sell {
   background-color: #2baeb7;
   border: none;
   color: white;

@@ -7,11 +7,12 @@ const Offer = () => {
   const { id } = useParams();
   const [offerData, setOfferData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+          `https://vinted-api-v1.herokuapp.com/offer/${id}`
         );
         setOfferData(response.data);
       } catch (error) {
@@ -22,16 +23,6 @@ const Offer = () => {
     fetchData();
   }, [id]);
 
-  if (!isLoading) {
-    let key = Object.keys(offerData.product_details[0]);
-    if (key[0] !== "MARQUE") {
-      const newOfferData = { ...offerData };
-      newOfferData.product_details.unshift({
-        MARQUE: "Sans Marque",
-      });
-      setOfferData(newOfferData);
-    }
-  }
   return isLoading ? (
     <div>En cours de chargement...</div>
   ) : (
