@@ -47,10 +47,6 @@ const Home = ({
   }
 
   let pagination = Math.ceil(pubToDisplay.count / 10);
-  console.log(pubToDisplay.count);
-  console.log(pagination);
-  console.log(offers);
-  console.log(searchResults);
   console.log(`is loading is =${isLoading}`);
   return isLoading ? (
     <div>En cours de chargement...</div>

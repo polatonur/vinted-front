@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Offer from "./containers/Offer";
 import Home from "./containers/Home";
 import Header from "./components/Header";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import Footer from "./components/Footer";
 import axios from "axios";
 import Publish from "./containers/Publish";
+import Paiement from "./containers/Paiement";
 
 function App() {
   const [displayModalLogin, setDisplayModalLogin] = useState(false);
@@ -93,6 +94,12 @@ function App() {
             setDisplayPublish={setDisplayPublish}
             userToken={userToken}
             setDisplayModalLogin={setDisplayModalLogin}
+          />
+        </Route>
+        <Route>
+          <Paiement
+            setDisplayModalLogin={setDisplayModalLogin}
+            userToken={userToken}
           />
         </Route>
       </Switch>

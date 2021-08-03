@@ -70,7 +70,6 @@ const Header = ({
         "https://vinted-api-v1.herokuapp.com/offers",
         headers
       );
-      // setSearchedText("");
       setSearchResults(response.data);
     } catch (error) {
       console.log(error.message);
@@ -111,23 +110,20 @@ const Header = ({
             onChange={handlerSearch}
           />
         </div>
-        {/* {displaySearchButton && (
-            <div className="search-btn-hidden">
-              <button>Rechercher </button> <span>: {searchedText}</span>
-            </div>
-          )} */}
-
         <div className="filter">
-          <span>Tier par prix: </span>
-          <input type="checkbox" onClick={handlerCheckBox} />
-          <span>Prix entre :</span>
-          {/* <span className="filter-bar"></span> */}
-          <div className="range-div">
-            <TwoLabeledRange
-              setMaxMin={setMaxMin}
-              handlerMAxMin={handlerMAxMin}
-            />
-          </div>
+          <span>
+            <span>Tier par prix: </span>
+            <input type="checkbox" onClick={handlerCheckBox} />
+          </span>
+          <span>
+            <span>Prix entre :</span>
+            <div className="range-div">
+              <TwoLabeledRange
+                setMaxMin={setMaxMin}
+                handlerMAxMin={handlerMAxMin}
+              />
+            </div>
+          </span>
         </div>
       </div>
       <nav

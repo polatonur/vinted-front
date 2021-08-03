@@ -113,6 +113,7 @@ main .info {
 .info .bottom {
   border-top: 1px solid grey;
   padding-top: 60px;
+  box-sizing: border-box;
 }
 .info .upper .price {
   font-size: 24px;
