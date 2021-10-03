@@ -9003,6 +9003,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-activity@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-activity/-/react-activity-2.1.1.tgz#39cfdf5138edec3a9e86780771a3c83571ff68d4"
+  integrity sha512-QzArf8ED9Q2s8z30IB5VOMqbBsjZrc/Tj6Yc0TxN4UrjZ8hIr8wfAcTS+0IoAR0BiqaQ36wdhnrSFDLg+nxfuQ==
+
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"

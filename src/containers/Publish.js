@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./publish.css";
 
 const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
   const history = useHistory();

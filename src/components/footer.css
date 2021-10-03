@@ -1,0 +1,23 @@
+/* FOOTER */
+footer {
+  border-top: 1px solid rgb(95, 94, 94);
+  /* width: 100vw; */
+}
+footer div {
+  background-color: rgb(233, 234, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #808080;
+  font-size: 13px;
+  line-height: 16px;
+  height: 60px;
+  width: 100%;
+}
+
+footer span,
+footer a {
+  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+}

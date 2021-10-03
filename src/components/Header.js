@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import "../containers/Home.css";
-import axios from "axios";
 import TwoLabeledRange from "./TwoLabeledRange";
+import "./header.css";
+import MenuMobile from "./MenuMobile";
 
 library.add(faSearch);
 
@@ -14,83 +15,26 @@ const Header = ({
   setUserToken,
   setDisplayModalLogin,
   setDisplayModalSignup,
-  setSearchResults,
   searchedText,
   setSearchedText,
-  pageNo,
-  maxMin,
   setMaxMin,
-  ascOrDesc,
   setAscOrDesc,
 }) => {
-  // const [displaySearchButton, setDisplaySearchButton] = useState(false);
-
-  let headers = {
-    params: {
-      title: searchedText,
-      priceMin: maxMin.min || 0,
-      priceMax: maxMin.max || 500,
-      sort: ascOrDesc,
-      skip: 0,
-      limit: 5,
-      page: pageNo,
-    },
-  };
-
   const logout = () => {
     setUserToken(null);
   };
 
-  const handlerMAxMin = async (values) => {
-    headers.params.priceMax = values.max;
-    headers.params.priceMin = values.min;
-    try {
-      console.log(headers.params);
-      const response = await axios.get(
-        "https://vinted-api-v1.herokuapp.com/offers",
-        headers
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   const handlerCheckBox = async (event) => {
     if (event.target.checked) {
-      headers.params.sort = "price-desc";
       setAscOrDesc("price-desc");
     } else {
-      headers.params.sort = "price-asc";
       setAscOrDesc("price-asc");
-    }
-    try {
-      console.log(headers.params);
-      const response = await axios.get(
-        "https://vinted-api-v1.herokuapp.com/offers",
-        headers
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.log(error.message);
     }
   };
 
   const handlerSearch = async (event) => {
     if (event) {
-      headers.params.title = event.target.value;
       setSearchedText(event.target.value);
-    }
-    try {
-      console.log(headers.params);
-      const response = await axios.get(
-        "https://vinted-api-v1.herokuapp.com/offers",
-        headers
-      );
-      setSearchResults(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
     }
   };
   return (
@@ -120,10 +64,7 @@ const Header = ({
             <span>
               <span>Prix entre :</span>
               <div className="range-div">
-                <TwoLabeledRange
-                  setMaxMin={setMaxMin}
-                  handlerMAxMin={handlerMAxMin}
-                />
+                <TwoLabeledRange setMaxMin={setMaxMin} />
               </div>
             </span>
           </div>
@@ -155,6 +96,7 @@ const Header = ({
           <Link to="/publish">
             <button className="btn-sell">Vends tes articles</button>
           </Link>
+          <MenuMobile />
         </nav>
       </div>
       <div className="filter-search-hidden">
@@ -175,10 +117,7 @@ const Header = ({
           <span>
             <span>Prix entre :</span>
             <div className="range-div">
-              <TwoLabeledRange
-                setMaxMin={setMaxMin}
-                handlerMAxMin={handlerMAxMin}
-              />
+              <TwoLabeledRange setMaxMin={setMaxMin} />
             </div>
           </span>
         </div>

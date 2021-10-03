@@ -1,1 +1,72 @@
 /* Other rules */
+@font-face {
+  font-family: "vinted";
+  src: url("./assets/fonts/Font.woff2") format("woff2"),
+    url("./assets/fonts/Font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maison neue medium";
+  src: url("./assets/fonts/Maison-neue-med.woff2") format("woff2"),
+    url("./assets/fonts/Maison-neue-med.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maison neue book";
+  src: url("./assets/fonts/maison-neue-book.woff2") format("woff2"),
+    url("./assets/fonts/maison-neue-book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*----------------------Global Rules---------------------------- */
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  font-family: "Maison neue book";
+}
+@media (max-width: 1300px) {
+  .container {
+    width: 95vw;
+    /* max-width: 100%; */
+  }
+}
+* {
+  font-family: "Maison neue book";
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  outline: none;
+  cursor: pointer;
+}
+h4 {
+  cursor: pointer;
+}
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+.input-range__label--min,
+.input-range__label--max {
+  display: none;
+}

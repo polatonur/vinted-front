@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import Footer from "./components/Footer";
-import axios from "axios";
 import Publish from "./containers/Publish";
 import Paiement from "./containers/Paiement";
 
@@ -14,36 +13,10 @@ function App() {
   const [displayModalLogin, setDisplayModalLogin] = useState(false);
   const [displayModalSignup, setDisplayModalSignup] = useState(false);
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-  const [searchResults, setSearchResults] = useState();
-  const [searchedText, setSearchedText] = useState();
-  const [pageNo, setPageNo] = useState(1);
-  const [maxMin, setMaxMin] = useState({});
+  const [searchedText, setSearchedText] = useState("");
+  const [maxMin, setMaxMin] = useState({ min: 0, max: 500 });
   const [ascOrDesc, setAscOrDesc] = useState("price-asc");
   const [displayPublish, setDisplayPublish] = useState(true);
-
-  const paginationHandler = async (page) => {
-    let headers = {
-      params: {
-        title: searchedText,
-        priceMin: maxMin.min || 0,
-        priceMax: maxMin.max || 500,
-        sort: ascOrDesc,
-        skip: 0,
-        limit: 5,
-      },
-    };
-    headers.params.page = page;
-    try {
-      console.log(headers.params);
-      const response = await axios.get(
-        "https://vinted-api-v1.herokuapp.com/offers",
-        headers
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   const setUser = (token) => {
     setDisplayModalLogin(false);
@@ -54,15 +27,10 @@ function App() {
   return (
     <Router>
       <Header
-        ascOrDesc={ascOrDesc}
         setAscOrDesc={setAscOrDesc}
-        maxMin={maxMin}
         setMaxMin={setMaxMin}
-        pageNo={pageNo}
-        setPageNo={setPageNo}
         searchedText={searchedText}
         setSearchedText={setSearchedText}
-        setSearchResults={setSearchResults}
         setUser={setUser}
         userToken={userToken}
         setUserToken={setUserToken}
@@ -75,13 +43,11 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home
+            ascOrDesc={ascOrDesc}
+            maxMin={maxMin}
             displayPublish={displayPublish}
             setDisplayPublish={setDisplayPublish}
-            paginationHandler={paginationHandler}
-            pageNo={pageNo}
-            setPageNo={setPageNo}
             searchedText={searchedText}
-            searchResults={searchResults}
             setUser={setUser}
             displayModalLogin={displayModalLogin}
             displayModalSignup={displayModalSignup}

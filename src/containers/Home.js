@@ -6,6 +6,9 @@ import heroImg from "../assets/img/img-hero.jpg";
 import imgDecor from "../assets/img/img-decoration.svg";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import Pagination from "../components/Pagination";
+import ActivityIndicator from "../components/ActivityIndicator";
+import "../components/hero.css";
 
 const Home = ({
   displayModalLogin,
@@ -13,23 +16,21 @@ const Home = ({
   setDisplayModalLogin,
   setDisplayModalSignup,
   setUser,
-  searchResults,
   searchedText,
-  setSearchedText,
-  pageNo,
-  setPageNo,
-  paginationHandler,
+  ascOrDesc,
+  maxMin,
   displayPublish,
   setDisplayPublish,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [offers, setOffers] = useState([]);
+  const [offers, setOffers] = useState();
+  const [activePage, setActivePage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://vinted-api-v1.herokuapp.com/offers?sort=price-asc&page=1&limit=5"
+          `https://vinted-api-v1.herokuapp.com/offers?title=${searchedText}&priceMin=${maxMin.min}&priceMax=${maxMin.max}&sort=${ascOrDesc}&page=${activePage}&limit=5`
         );
         setOffers(response.data);
         console.log(response.data);
@@ -39,23 +40,11 @@ const Home = ({
       }
     };
     fetchData();
-  }, []);
-  let pubToDisplay = {};
-  let pagination = 1;
-  console.log(searchResults);
-  if (!isLoading) {
-    if (offers) {
-      pubToDisplay = offers;
-    }
-    if (searchResults || searchedText) {
-      pubToDisplay = searchResults;
-    }
-    console.log(pubToDisplay);
-    pagination = Math.ceil(pubToDisplay.count / 10);
-  }
+  }, [activePage, ascOrDesc, maxMin, searchedText]);
+
   console.log(`is loading is =${isLoading}`);
   return isLoading ? (
-    <div>En cours de chargement...</div>
+    <ActivityIndicator height={"100vh"} />
   ) : (
     <div className="home">
       <section className="hero">
@@ -71,7 +60,7 @@ const Home = ({
         </div>
       </section>
       <main className="offers container">
-        {pubToDisplay.offers.map((offer) => {
+        {offers.offers.map((offer) => {
           return (
             <Link key={offer.id} to={`/offer/${offer._id}`}>
               {" "}
@@ -100,7 +89,6 @@ const Home = ({
             </Link>
           );
         })}
-        {/* {pubToDisplay.slice(0)} */}
       </main>
       {displayModalSignup && (
         <Signup
@@ -120,19 +108,12 @@ const Home = ({
           setDisplayModalLogin={setDisplayModalLogin}
         />
       )}
-      <div className="bottom-page-nos">
-        {pubToDisplay.offers.slice(0, pagination).map((elem, index) => {
-          return (
-            <span
-              onClick={() => {
-                paginationHandler(index + 1);
-              }}
-            >
-              {index + 1}
-            </span>
-          );
-        })}
-      </div>
+      <Pagination
+        count={offers.count}
+        activePage={activePage}
+        setActivePage={setActivePage}
+        perPage={10}
+      />
     </div>
   );
 };
