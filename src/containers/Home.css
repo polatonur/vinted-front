@@ -101,72 +101,93 @@
     height: 74%;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 970.98px) {
   .publish {
     width: 90vw;
   }
   .offer-card {
-    width: 22vw;
-    height: 40vw;
+    width: 30vw;
+    height: 50vw;
   }
   .offer-card .image {
     height: 73%;
   }
-  @media (max-width: 900px) {
-    .offer-card {
-      width: 40vw;
-      height: 60vw;
-    }
-    .offer-card .image {
-      height: 76%;
-    }
+}
+/* @media (max-width: 900px) {
+  .offer-card {
+    width: 40vw;
+    height: 60vw;
+  }
+  .offer-card .image {
+    height: 76%;
+  }
+} */
+@media (max-width: 700px) {
+  .username {
+    height: 30px;
+  }
+  .avatar {
+    height: 20px;
+    width: 20px;
+  }
+  .offer-card {
+    width: 40vw;
+    height: 60vw;
+  }
+  .offer-card .image {
+    min-height: 70%;
+  }
 
-    /* .details {
+  /* .details {
       display: none;
     } */
-  }
-  @media (max-width: 700px) {
-    .username {
-      height: 30px;
-    }
-    .avatar {
-      height: 20px;
-      width: 20px;
-    }
-    .offer-card {
-      width: 40vw;
-      height: 60vw;
-    }
-    .offer-card .image {
-      height: 70%;
-    }
-
-    /* .details {
-      display: none;
-    } */
-  }
-  @media (max-width: 570px) {
-    /* .bottom-info {
+}
+@media (max-width: 570px) {
+  /* .bottom-info {
       display: flex;
     } */
-    .avatar {
-      height: 18px;
-      width: 18px;
-    }
-    .username {
-      font-size: 1rem;
-      height: 25px;
-    }
-    .offer-card {
-      width: 40vw;
-      height: 75vw;
-    }
-    .offer-card .image {
-      height: 65%;
-    }
-    .price,
-    .brand {
-      font-size: 12px;
-    }
+  .pagination .page-number {
+    font-size: 1rem;
+  }
+  .avatar {
+    height: 18px;
+    width: 18px;
+  }
+  .username {
+    font-size: 1rem;
+    height: 25px;
+  }
+  .offer-card {
+    width: 40vw;
+    height: 75vw;
+  }
+  .offer-card .image {
+    height: 65%;
+  }
+  .price,
+  .brand {
+    font-size: 12px;
+  }
+}
+@media (max-width: 400px) {
+  .username {
+    font-size: 0.8rem;
+    height: 30px;
+  }
+  .avatar {
+    height: 20px;
+    width: 20px;
+  }
+  .price,
+  .brand,
+  .details {
+    font-size: 0.7rem;
+  }
+  .offer-card {
+    width: 40vw;
+    height: 88vw;
+  }
+  .offer-card .image {
+    min-height: 70%;
   }
 }
