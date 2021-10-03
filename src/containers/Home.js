@@ -25,12 +25,31 @@ const Home = ({
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState();
   const [activePage, setActivePage] = useState(1);
+  console.log(window.innerWidth);
 
+  const getPageLimit = () => {
+    const width = window.innerWidth;
+    if (width > 1200) {
+      return 10;
+    }
+    if (width > 900) {
+      return 9;
+    }
+    if (width > 570) {
+      return 8;
+    } else {
+      return 10;
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://vinted-api-v1.herokuapp.com/offers?title=${searchedText}&priceMin=${maxMin.min}&priceMax=${maxMin.max}&sort=${ascOrDesc}&page=${activePage}&limit=5`
+          `http://localhost:5000/offers?title=${searchedText}&priceMin=${
+            maxMin.min
+          }&priceMax=${
+            maxMin.max
+          }&sort=${ascOrDesc}&page=${activePage}&limit=${getPageLimit()}`
         );
         setOffers(response.data);
         console.log(response.data);
