@@ -29,10 +29,10 @@ const Home = ({
 
   const getPageLimit = () => {
     const width = window.innerWidth;
-    if (width > 1200) {
+    if (width > 970) {
       return 10;
     }
-    if (width > 900) {
+    if (width > 700) {
       return 9;
     }
     if (width > 570) {
@@ -45,7 +45,7 @@ const Home = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/offers?title=${searchedText}&priceMin=${
+          `https://vinted-api-v1.herokuapp.com/offers?title=${searchedText}&priceMin=${
             maxMin.min
           }&priceMax=${
             maxMin.max
@@ -131,7 +131,7 @@ const Home = ({
         count={offers.count}
         activePage={activePage}
         setActivePage={setActivePage}
-        perPage={10}
+        perPage={getPageLimit()}
       />
     </div>
   );
