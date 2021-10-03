@@ -1,6 +1,6 @@
 .menu-mobile {
   display: flex;
-  color: red;
+  color: #1fb1ba;
   display: none;
 }
 .menu-mobile-icon {
@@ -33,7 +33,7 @@
   font-size: 1.5rem;
 }
 .menu_mobile_signout_btn {
-  background-color: var(--gamepad-red);
+  background-color: #1fb1ba;
   border-radius: 5px;
   align-self: flex-end;
   justify-self: end;
@@ -52,32 +52,6 @@
   background-color: rgb(176, 173, 173);
 }
 
-.menu-mobile-profile_photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 50px;
-  margin-right: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: thistle;
-  margin-left: 10px;
-}
-.menu-mobile-profile_photo > span {
-  font-size: 30px;
-  line-height: 21px;
-  font-weight: bold;
-  font-family: "Exo", sans-serif;
-  text-decoration: none;
-}
-.menu-mobile-profile_photo img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: tomato;
-}
 @media (max-width: 767.98px) {
   .menu-mobile {
     display: flex;

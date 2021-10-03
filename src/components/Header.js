@@ -1,14 +1,12 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import "../containers/Home.css";
 import TwoLabeledRange from "./TwoLabeledRange";
 import "./header.css";
+import { useState } from "react";
 import MenuMobile from "./MenuMobile";
-
-library.add(faSearch);
+import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
 const Header = ({
   userToken,
@@ -20,9 +18,8 @@ const Header = ({
   setMaxMin,
   setAscOrDesc,
 }) => {
-  const logout = () => {
-    setUserToken(null);
-  };
+  // const [displayPriceRange, setDisplayPriceRange] = useState(true);
+  // const [displaySortBy, setDisplaySortBy] = useState(true);
 
   const handlerCheckBox = async (event) => {
     if (event.target.checked) {
@@ -31,6 +28,13 @@ const Header = ({
       setAscOrDesc("price-asc");
     }
   };
+
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useOutsideAlerter(false);
+  // console.log("visib", isComponentVisible);
+  const secondComp = useOutsideAlerter(false);
+
+  // const { ref2, displaySortBy, setDisplaySortBy } = useOutsideAlerter(true);
 
   const handlerSearch = async (event) => {
     if (event) {
@@ -79,12 +83,12 @@ const Header = ({
           {userToken ? (
             <Link to="/">
               {" "}
-              <button className="logout-btn" onClick={logout}>
+              <button className="logout-btn" onClick={() => setUserToken(null)}>
                 Se deconnecter
               </button>
             </Link>
           ) : (
-            <div>
+            <div className="connection-btn">
               <button onClick={() => setDisplayModalSignup(true)}>
                 S'inscrire
               </button>
@@ -110,15 +114,51 @@ const Header = ({
           />
         </div>
         <div className="filter">
-          <span>
-            <span>Tier par prix: </span>
-            <input type="checkbox" onClick={handlerCheckBox} />
+          <span ref={secondComp.ref}>
+            <span
+              onClick={() =>
+                secondComp.setIsComponentVisible(!secondComp.isComponentVisible)
+              }
+            >
+              Tier par prix:{" "}
+            </span>
+            <FontAwesomeIcon
+              onClick={() =>
+                secondComp.setIsComponentVisible(!secondComp.isComponentVisible)
+              }
+              className="up-down-icons"
+              icon={"sort-down"}
+            />
+            <input
+              className="checkbox1"
+              type="checkbox"
+              onClick={handlerCheckBox}
+            />
+
+            {secondComp.isComponentVisible && (
+              <div className="checkbox-div">
+                {" "}
+                <input type="checkbox" onClick={handlerCheckBox} />
+              </div>
+            )}
           </span>
-          <span>
-            <span>Prix entre :</span>
+          <span ref={ref}>
+            <span onClick={() => setIsComponentVisible(!isComponentVisible)}>
+              Prix entre :{" "}
+            </span>
+            <FontAwesomeIcon
+              onClick={() => setIsComponentVisible(!isComponentVisible)}
+              className="up-down-icons"
+              icon={"sort-down"}
+            />{" "}
             <div className="range-div">
               <TwoLabeledRange setMaxMin={setMaxMin} />
             </div>
+            {isComponentVisible && (
+              <div className="range-div-2">
+                <TwoLabeledRange setMaxMin={setMaxMin} />
+              </div>
+            )}
           </span>
         </div>
       </div>

@@ -8,6 +8,14 @@ import { useState } from "react";
 import Footer from "./components/Footer";
 import Publish from "./containers/Publish";
 import Paiement from "./containers/Paiement";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faSearch,
+  faBars,
+  faSortDown,
+  faSortUp,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faBars, faSortDown, faSortUp);
 
 function App() {
   const [displayModalLogin, setDisplayModalLogin] = useState(false);
