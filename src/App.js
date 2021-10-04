@@ -14,8 +14,9 @@ import {
   faBars,
   faSortDown,
   faSortUp,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faBars, faSortDown, faSortUp);
+library.add(faSearch, faBars, faSortDown, faSortUp, faSignOutAlt);
 
 function App() {
   const [displayModalLogin, setDisplayModalLogin] = useState(false);

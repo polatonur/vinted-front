@@ -1,5 +1,4 @@
 .menu-mobile {
-  display: flex;
   color: #1fb1ba;
   display: none;
 }
@@ -10,14 +9,14 @@
 }
 .menu-mobile .menu-block {
   z-index: 100;
-  background: linear-gradient(#37373b, #0f0f0f);
+  background: linear-gradient(#c4c4c4, #fffbfb);
   position: fixed;
   transition: all 0.3s ease;
-  top: 0;
+  top: 59px;
   right: -100vw;
   width: 100vw;
-  height: 100vh;
-  color: white;
+  height: calc(100vh - 59px);
+  color: black;
   border-radius: 5px;
   box-sizing: border-box;
   padding: 20px;
@@ -48,17 +47,13 @@
   padding: 10px;
   cursor: pointer;
 }
-.menu-mobile .menu-block ul a:hover {
+.menu-mobile .menu-block ul li:hover {
   background-color: rgb(176, 173, 173);
+  border-radius: 5px;
 }
 
 @media (max-width: 767.98px) {
   .menu-mobile {
     display: flex;
-  }
-}
-@media (max-width: 450px) {
-  .menu-mobile-profile_photo {
-    display: none;
   }
 }

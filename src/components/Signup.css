@@ -114,3 +114,15 @@
   font-size: 16px;
   line-height: 13px;
 }
+
+@media (max-width: 767.98px) {
+  .signup {
+    background-color: #fff;
+  }
+  .signup .signup-block {
+    box-shadow: none;
+  }
+  .signup .close-icon {
+    font-size: 1.5rem;
+  }
+}

@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import "../containers/Home.css";
 import TwoLabeledRange from "./TwoLabeledRange";
 import "./header.css";
-import { useState } from "react";
 import MenuMobile from "./MenuMobile";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
@@ -18,8 +17,8 @@ const Header = ({
   setMaxMin,
   setAscOrDesc,
 }) => {
-  // const [displayPriceRange, setDisplayPriceRange] = useState(true);
-  // const [displaySortBy, setDisplaySortBy] = useState(true);
+  const location = useLocation();
+  console.log("location==>", location.pathname);
 
   const handlerCheckBox = async (event) => {
     if (event.target.checked) {
@@ -42,7 +41,10 @@ const Header = ({
     }
   };
   return (
-    <header className="container">
+    <header
+      style={{ height: location.pathname !== "/" && "60px" }}
+      className="container"
+    >
       <div className="upper-header">
         <Link to="/">
           {" "}
@@ -50,29 +52,31 @@ const Header = ({
             <img src={logo} alt="vinted" />
           </div>
         </Link>
-        <div className="filter-search">
-          <div className="search">
-            <FontAwesomeIcon className="search-icon" icon="search" />
-            <input
-              value={searchedText}
-              type="search"
-              placeholder="Rechercher des articles"
-              onChange={handlerSearch}
-            />
+        {location.pathname === "/" && (
+          <div className="filter-search">
+            <div className="search">
+              <FontAwesomeIcon className="search-icon" icon="search" />
+              <input
+                value={searchedText}
+                type="search"
+                placeholder="Rechercher des articles"
+                onChange={handlerSearch}
+              />
+            </div>
+            <div className="filter">
+              <span>
+                <span>Tier par prix: </span>
+                <input type="checkbox" onClick={handlerCheckBox} />
+              </span>
+              <span>
+                <span>Prix entre :</span>
+                <div className="range-div">
+                  <TwoLabeledRange setMaxMin={setMaxMin} />
+                </div>
+              </span>
+            </div>
           </div>
-          <div className="filter">
-            <span>
-              <span>Tier par prix: </span>
-              <input type="checkbox" onClick={handlerCheckBox} />
-            </span>
-            <span>
-              <span>Prix entre :</span>
-              <div className="range-div">
-                <TwoLabeledRange setMaxMin={setMaxMin} />
-              </div>
-            </span>
-          </div>
-        </div>
+        )}
         <nav
           className="nav-bar"
           style={{
@@ -100,68 +104,79 @@ const Header = ({
           <Link to="/publish">
             <button className="btn-sell">Vends tes articles</button>
           </Link>
-          <MenuMobile />
+          <MenuMobile
+            userToken={userToken}
+            setUserToken={setUserToken}
+            setDisplayModalLogin={setDisplayModalLogin}
+            setDisplayModalSignup={setDisplayModalSignup}
+          />
         </nav>
       </div>
-      <div className="filter-search-hidden">
-        <div className="search">
-          <FontAwesomeIcon className="search-icon" icon="search" />
-          <input
-            value={searchedText}
-            type="search"
-            placeholder="Rechercher des articles"
-            onChange={handlerSearch}
-          />
-        </div>
-        <div className="filter">
-          <span ref={secondComp.ref}>
-            <span
-              onClick={() =>
-                secondComp.setIsComponentVisible(!secondComp.isComponentVisible)
-              }
-            >
-              Tier par prix:{" "}
-            </span>
-            <FontAwesomeIcon
-              onClick={() =>
-                secondComp.setIsComponentVisible(!secondComp.isComponentVisible)
-              }
-              className="up-down-icons"
-              icon={"sort-down"}
-            />
+      {location.pathname === "/" && (
+        <div className="filter-search-hidden">
+          <div className="search">
+            <FontAwesomeIcon className="search-icon" icon="search" />
             <input
-              className="checkbox1"
-              type="checkbox"
-              onClick={handlerCheckBox}
+              value={searchedText}
+              type="search"
+              placeholder="Rechercher des articles"
+              onChange={handlerSearch}
             />
+          </div>
+          <div className="filter">
+            <span ref={secondComp.ref}>
+              <span
+                onClick={() =>
+                  secondComp.setIsComponentVisible(
+                    !secondComp.isComponentVisible
+                  )
+                }
+              >
+                Tier par prix:{" "}
+              </span>
+              <FontAwesomeIcon
+                onClick={() =>
+                  secondComp.setIsComponentVisible(
+                    !secondComp.isComponentVisible
+                  )
+                }
+                className="up-down-icons"
+                icon={"sort-down"}
+              />
+              <input
+                className="checkbox1"
+                type="checkbox"
+                onClick={handlerCheckBox}
+              />
 
-            {secondComp.isComponentVisible && (
-              <div className="checkbox-div">
-                {" "}
-                <input type="checkbox" onClick={handlerCheckBox} />
-              </div>
-            )}
-          </span>
-          <span ref={ref}>
-            <span onClick={() => setIsComponentVisible(!isComponentVisible)}>
-              Prix entre :{" "}
+              {secondComp.isComponentVisible && (
+                <div className="checkbox-div">
+                  {" "}
+                  <input type="checkbox" onClick={handlerCheckBox} />
+                </div>
+              )}
             </span>
-            <FontAwesomeIcon
-              onClick={() => setIsComponentVisible(!isComponentVisible)}
-              className="up-down-icons"
-              icon={"sort-down"}
-            />{" "}
-            <div className="range-div">
-              <TwoLabeledRange setMaxMin={setMaxMin} />
-            </div>
-            {isComponentVisible && (
-              <div className="range-div-2">
+            <span ref={ref}>
+              <span onClick={() => setIsComponentVisible(!isComponentVisible)}>
+                Prix entre :{" "}
+              </span>
+              <FontAwesomeIcon
+                onClick={() => setIsComponentVisible(!isComponentVisible)}
+                className="up-down-icons"
+                icon={"sort-down"}
+              />{" "}
+              <div className="range-div">
                 <TwoLabeledRange setMaxMin={setMaxMin} />
               </div>
-            )}
-          </span>
+              {isComponentVisible && (
+                <div className="range-div-2">
+                  <TwoLabeledRange setMaxMin={setMaxMin} />
+                </div>
+              )}
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

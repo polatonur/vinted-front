@@ -262,12 +262,12 @@ header .filter-search-hidden .filter > span {
   }
 }
 @media (max-width: 1199.98px) {
-  .publish {
-    width: 90vw;
-  }
   header .upper-header .nav-bar {
     justify-content: flex-end;
     margin-right: 10px;
+  }
+  header .upper-header .filter-search {
+    width: 45%;
   }
 }
 @media (max-width: 767.98px) {

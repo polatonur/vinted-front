@@ -7,31 +7,31 @@ import { Link } from "react-router-dom";
 const MenuMobile = ({
   userToken,
   setUserToken,
-  setDisplayLogin,
-  setDisplaySignup,
+  setDisplayModalLogin,
+  setDisplayModalSignup,
 }) => {
   const [displayMenu, setDisplayMenu] = useState(false);
   return (
     <div className="menu-mobile">
-      <FontAwesomeIcon
-        onClick={() => {
-          setDisplayMenu(true);
-        }}
-        className="menu-mobile-icon"
-        icon="bars"
-      />{" "}
+      {displayMenu ? (
+        <FontAwesomeIcon
+          className="menu-mobile-icon"
+          onClick={() => setDisplayMenu(false)}
+          icon="times"
+        />
+      ) : (
+        <FontAwesomeIcon
+          onClick={() => {
+            setDisplayMenu(true);
+          }}
+          className="menu-mobile-icon"
+          icon="bars"
+        />
+      )}
       <div
         style={{ right: displayMenu ? "0" : "-100vw" }}
         className="menu-block"
       >
-        <p>
-          {" "}
-          <FontAwesomeIcon
-            className="close-icon"
-            onClick={() => setDisplayMenu(false)}
-            icon="times"
-          />
-        </p>
         <ul>
           <Link to="/">
             <li onClick={() => setDisplayMenu(false)}>
@@ -39,22 +39,10 @@ const MenuMobile = ({
               <span className="header_link_1">Home</span>
             </li>
           </Link>
-          <Link to="/characters" onClick={() => setDisplayMenu(false)}>
+          <Link onClick={() => setDisplayMenu(false)} to="/publish">
             <li>
               {" "}
-              <span className="header_link_1">Characters</span>
-            </li>
-          </Link>
-          <Link onClick={() => setDisplayMenu(false)} to="/comics">
-            <li>
-              {" "}
-              <span className="username">Comics</span>
-            </li>
-          </Link>
-          <Link onClick={() => setDisplayMenu(false)} to="/favoris">
-            <li>
-              {" "}
-              <span className="username">Favorites</span>
+              <span className="header_link_1">Vends tes articles</span>
             </li>
           </Link>
 
@@ -74,21 +62,21 @@ const MenuMobile = ({
             <>
               <li
                 onClick={() => {
-                  setDisplayLogin(true);
+                  setDisplayModalLogin(true);
                   setDisplayMenu(false);
                 }}
               >
                 {" "}
-                <span className="username">Login</span>
+                <span className="header_link_1">Login</span>
               </li>
               <li
                 onClick={() => {
-                  setDisplaySignup(true);
+                  setDisplayModalSignup(true);
                   setDisplayMenu(false);
                 }}
               >
                 {" "}
-                <span className="username">Signup</span>
+                <span className="header_link_1">Signup</span>
               </li>
             </>
           )}

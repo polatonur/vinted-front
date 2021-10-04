@@ -154,3 +154,27 @@
   border: none;
   background-color: #2baeb7;
 }
+
+@media (max-width: 1299.98px) {
+  .publish {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 970.98px) {
+  .publish {
+    width: 95vw;
+  }
+  .publish h1 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 570px) {
+  .publish section > div > div {
+    padding: 10px;
+  }
+  .publish-price-col-2-bottom label {
+    font-size: 12px;
+  }
+}

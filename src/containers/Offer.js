@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Offer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 const Offer = () => {
   const { id } = useParams();
@@ -24,11 +25,11 @@ const Offer = () => {
   }, [id]);
 
   return isLoading ? (
-    <div>En cours de chargement...</div>
+    <ActivityIndicator height={"calc(100vh - 121px)"} />
   ) : (
     <div className="offer">
       <section className="contain">
-        <main className="container">
+        <main className="main-offer container">
           <div className="photo">
             <img src={offerData.product_image.secure_url} alt="product" />
           </div>
