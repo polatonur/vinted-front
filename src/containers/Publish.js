@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./publish.css";
 
@@ -21,41 +21,61 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
   const [pbCity, setPbCity] = useState("");
   const [pbPrice, setPbPrice] = useState("");
   const [pbPicture, setPbPicture] = useState();
+  const [err, setErr] = useState("");
 
   const handlerPublishButton = async (event) => {
     event.preventDefault();
-
-    const formData = new FormData();
-    formData.append("title", pbTitle);
-    formData.append("price", pbPrice);
-    formData.append("city", pbCity);
-    formData.append("brand", pbBrand);
-    formData.append("condition", pbCondition);
-    formData.append("description", pbDescription);
-    formData.append("color", pbColor);
-    formData.append("size", pbSize);
-    formData.append("picture", pbPicture);
-    console.log("submit");
-    try {
-      const response = await axios.post(
-        "https://vinted-api-v1.herokuapp.com/offer/publish",
-        formData,
-        {
-          headers: {
-            Authorization: "Bearer " + userToken,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log(response.data);
-      history.push(`offer/${response.data.id}`);
-    } catch (error) {
-      console.log(error.message);
+    if (pbTitle && pbPrice && pbDescription) {
+      const formData = new FormData();
+      formData.append("title", pbTitle);
+      formData.append("price", pbPrice);
+      formData.append("city", pbCity);
+      formData.append("brand", pbBrand);
+      formData.append("condition", pbCondition);
+      formData.append("description", pbDescription);
+      formData.append("color", pbColor);
+      formData.append("size", pbSize);
+      formData.append("picture", pbPicture);
+      console.log("submit");
+      try {
+        const response = await axios.post(
+          "https://vinted-api-v1.herokuapp.com/offer/publish",
+          formData,
+          {
+            headers: {
+              Authorization: "Bearer " + userToken,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response.data);
+        setErr("");
+        history.push(`offer/${response.data.id}`);
+      } catch (error) {
+        console.log(error.message);
+      }
+    } else {
+      setErr(true);
     }
   };
 
+  if (err) {
+    setTimeout(() => {
+      setErr(false);
+    }, 4000);
+  }
+
   return (
-    <main className="main-publish">
+    <div className="main-publish">
+      <div
+        onClick={() => {
+          setErr(false);
+        }}
+        style={{ right: err ? "20px" : "-400px" }}
+        className="hidden-alert"
+      >
+        Les champs description, prix et titre doivent être remplis
+      </div>
       <form onSubmit={handlerPublishButton} className="publish container">
         <h1>Vends ton article</h1>
         <section className="publish-photo">
@@ -174,7 +194,7 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
           <button type="submit">Ajouter</button>
         </div>
       </form>
-    </main>
+    </div>
   );
 };
 
