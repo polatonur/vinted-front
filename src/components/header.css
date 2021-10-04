@@ -122,8 +122,12 @@ header .upper-header .filter-search .search {
   border-radius: 20px;
   transition: 0.5s;
 }
+
 .filter input[type="checkbox"]:checked {
   background-color: #279da5;
+}
+input[type="checkbox"] {
+  font-size: 1rem;
 }
 .filter input[type="checkbox"]:before {
   display: flex;

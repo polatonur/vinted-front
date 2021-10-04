@@ -1,4 +1,5 @@
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./publish.css";
@@ -22,6 +23,7 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
   const [pbPrice, setPbPrice] = useState("");
   const [pbPicture, setPbPicture] = useState();
   const [err, setErr] = useState("");
+  const [localURL, setLocalURL] = useState(null);
 
   const handlerPublishButton = async (event) => {
     event.preventDefault();
@@ -59,6 +61,14 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
     }
   };
 
+  const handleChooseFile = (event) => {
+    setPbPicture(event.target.files[0]);
+    if (event.target.files) {
+      const image = URL.createObjectURL(event.target.files[0]);
+      setLocalURL(image);
+    }
+  };
+
   if (err) {
     setTimeout(() => {
       setErr(false);
@@ -71,7 +81,7 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
         onClick={() => {
           setErr(false);
         }}
-        style={{ right: err ? "20px" : "-400px" }}
+        style={{ right: err ? "20px" : "-300px" }}
         className="hidden-alert"
       >
         Les champs description, prix et titre doivent être remplis
@@ -80,10 +90,25 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
         <h1>Vends ton article</h1>
         <section className="publish-photo">
           <div className="photo-container">
-            <input
-              type="file"
-              onChange={(event) => setPbPicture(event.target.files[0])}
-            />
+            {localURL ? (
+              <section className="publish-image">
+                {" "}
+                <FontAwesomeIcon
+                  onClick={() => {
+                    setLocalURL(null);
+                    setPbPicture(null);
+                  }}
+                  className="publish-delete-photo-icon"
+                  icon="times"
+                />
+                <img src={localURL} alt="new publish" />
+              </section>
+            ) : (
+              <input
+                type="file"
+                onChange={(event) => handleChooseFile(event)}
+              />
+            )}
           </div>
         </section>
         <section className="publish-description">

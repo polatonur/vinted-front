@@ -8,12 +8,7 @@
   width: 100%;
   margin-bottom: 16px;
 }
-.alert-publish {
-  text-align: center;
-  font-size: 20px;
-  color: red;
-  display: block;
-}
+
 .hidden-alert {
   border-radius: 5px;
   display: flex;
@@ -24,9 +19,10 @@
   right: 20px;
   color: #fff;
   background-color: red;
-  width: 400px;
-  height: 50px;
-  right: -400px;
+  max-width: 300px;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  right: -300px;
   transition: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .publish {
@@ -50,19 +46,38 @@
 .publish section {
   border: 1px solid grey;
   background-color: #fff;
+  overflow: hidden;
 }
-.publish section:first-child {
+.publish > section:first-child {
   height: 250px;
 }
 
 .publish .photo-container {
   margin: 24px;
   box-sizing: border-box;
-  height: 230px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px grey dotted;
+}
+.publish-image {
+  height: 100%;
+  max-width: 100%;
+  position: relative;
+}
+.publish-delete-photo-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  color: #fff;
+  padding: 5px;
+  background-color: rgba(125, 118, 118, 0.8);
+  border-radius: 2px;
+}
+.publish .photo-container img {
+  height: 100%;
 }
 .publish .photo-container input {
   width: min-content;
@@ -197,5 +212,11 @@
   }
   .publish-price-col-2-bottom label {
     font-size: 12px;
+  }
+  .publish section > div > div {
+    border-bottom: none;
+  }
+  .publish section {
+    border: none;
   }
 }
