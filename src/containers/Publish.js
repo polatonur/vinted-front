@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./publish.css";
 
@@ -48,7 +48,7 @@ const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
             },
           }
         );
-        console.log(response.data);
+        // console.log(response.data);
         setErr("");
         history.push(`offer/${response.data.id}`);
       } catch (error) {

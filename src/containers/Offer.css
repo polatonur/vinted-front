@@ -45,23 +45,23 @@ main .info {
   color: #111111;
   margin-bottom: 20px;
 }
-.details p {
+.details > div {
   font-size: 14px;
   line-height: 11.7px;
   display: flex;
   justify-content: space-between;
 }
-.details p div {
+.details > div div {
   margin-bottom: 10px;
   width: 50%;
   display: flex;
   justify-content: flex-start;
 }
-.details p div span:first-child {
+.details div div span:first-child {
   color: #999999;
   line-height: 14px;
 }
-.details p div span:last-child {
+.details div div span:last-child {
   color: #666666;
   line-height: 14px;
 }

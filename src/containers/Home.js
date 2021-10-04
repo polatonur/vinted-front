@@ -25,7 +25,7 @@ const Home = ({
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState();
   const [activePage, setActivePage] = useState(1);
-  console.log(window.innerWidth);
+  // console.log(window.innerWidth);
 
   const getPageLimit = () => {
     const width = window.innerWidth;
@@ -52,7 +52,7 @@ const Home = ({
           }&sort=${ascOrDesc}&page=${activePage}&limit=${getPageLimit()}`
         );
         setOffers(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -61,7 +61,6 @@ const Home = ({
     fetchData();
   }, [activePage, ascOrDesc, maxMin, searchedText]);
 
-  console.log(`is loading is =${isLoading}`);
   return isLoading ? (
     <ActivityIndicator height={"100vh"} />
   ) : (
@@ -81,7 +80,7 @@ const Home = ({
       <main className="offers container">
         {offers.offers.map((offer) => {
           return (
-            <Link key={offer.id} to={`/offer/${offer._id}`}>
+            <Link key={offer._id} to={`/offer/${offer._id}`}>
               {" "}
               <div className="offer-card">
                 <p className="username">

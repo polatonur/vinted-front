@@ -35,19 +35,19 @@ const Offer = () => {
           </div>
           <div className="info">
             <div className="upper">
-              <p className="price">{offerData.product_price} €</p>
+              <section className="price">{offerData.product_price} €</section>
               <div className="details">
                 {offerData.product_details.map((detail, index) => {
                   let keys = Object.keys(detail, index);
                   return (
-                    <p key={index}>
+                    <div key={index}>
                       <div>
                         <span>{keys[0]}</span>
                       </div>
                       <div>
                         <span>{detail[keys[0]]}</span>
                       </div>
-                    </p>
+                    </div>
                   );
                 })}
               </div>

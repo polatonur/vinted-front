@@ -18,7 +18,7 @@ const Header = ({
   setAscOrDesc,
 }) => {
   const location = useLocation();
-  console.log("location==>", location.pathname);
+  // console.log("location==>", location.pathname);
 
   const handlerCheckBox = async (event) => {
     if (event.target.checked) {
