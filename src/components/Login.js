@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faTimes);
 
 const Login = ({
+  dataRef,
+  pageRef,
   setUser,
   setDisplayModalLogin,
   setDisplayModalSignup,
@@ -30,11 +32,15 @@ const Login = ({
           password: pass,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setUser(response.data.token);
-      if (!displayPublish) {
-        history.push("/publish");
-        setDisplayPublish(true);
+      if (pageRef.current) {
+        history.push({
+          pathname: pageRef.current,
+          state: { data: dataRef.current },
+        });
+        pageRef.current = null;
+        dataRef.current = null;
       } else {
         history.push("/");
       }

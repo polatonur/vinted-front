@@ -4,7 +4,7 @@ import Offer from "./containers/Offer";
 import Home from "./containers/Home";
 import Header from "./components/Header";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Footer from "./components/Footer";
 import Publish from "./containers/Publish";
 import Paiement from "./containers/Paiement";
@@ -33,7 +33,8 @@ function App() {
   const [searchedText, setSearchedText] = useState("");
   const [maxMin, setMaxMin] = useState({ min: 0, max: 500 });
   const [ascOrDesc, setAscOrDesc] = useState("price-asc");
-  const [displayPublish, setDisplayPublish] = useState(true);
+  const pageRef = useRef(null);
+  const dataRef = useRef(null);
 
   const setUser = (token) => {
     setDisplayModalLogin(false);
@@ -44,6 +45,8 @@ function App() {
   return (
     <Router>
       <Header
+        dataRef={dataRef}
+        pageRef={pageRef}
         setAscOrDesc={setAscOrDesc}
         setMaxMin={setMaxMin}
         searchedText={searchedText}
@@ -51,35 +54,36 @@ function App() {
         setUser={setUser}
         userToken={userToken}
         setUserToken={setUserToken}
+        displayModalLogin={displayModalLogin}
+        displayModalSignup={displayModalSignup}
         setDisplayModalLogin={setDisplayModalLogin}
         setDisplayModalSignup={setDisplayModalSignup}
       />
       <Switch>
         <Route path="/offer/:id">
-          <Offer />
+          <Offer
+            pageRef={pageRef}
+            dataRef={dataRef}
+            setDisplayModalLogin={setDisplayModalLogin}
+            userToken={userToken}
+          />
         </Route>
         <Route exact path="/">
           <Home
+            userToken={userToken}
             ascOrDesc={ascOrDesc}
             maxMin={maxMin}
-            displayPublish={displayPublish}
-            setDisplayPublish={setDisplayPublish}
             searchedText={searchedText}
-            setUser={setUser}
-            displayModalLogin={displayModalLogin}
-            displayModalSignup={displayModalSignup}
-            setDisplayModalLogin={setDisplayModalLogin}
-            setDisplayModalSignup={setDisplayModalSignup}
           />
         </Route>
         <Route path="/publish">
           <Publish
-            setDisplayPublish={setDisplayPublish}
+            // setDisplayPublish={setDisplayPublish}
             userToken={userToken}
             setDisplayModalLogin={setDisplayModalLogin}
           />
         </Route>
-        <Route>
+        <Route path="/paiement">
           <Paiement
             setDisplayModalLogin={setDisplayModalLogin}
             userToken={userToken}

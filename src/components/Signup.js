@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -6,13 +6,18 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 library.add(faTimes);
-const Signup = ({ setUser, setDisplayModalLogin, setDisplayModalSignup }) => {
+const Signup = ({
+  pageRef,
+  dataRef,
+  setUser,
+  setDisplayModalLogin,
+  setDisplayModalSignup,
+}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
-  const location = useLocation();
   const handlerSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -25,8 +30,13 @@ const Signup = ({ setUser, setDisplayModalLogin, setDisplayModalSignup }) => {
         }
       );
       setUser(response.data.token);
-      if ((location.query.previousPage = "/publish")) {
-        history.push("/publish");
+      if (pageRef.current) {
+        history.push({
+          pathname: pageRef.current,
+          state: { data: dataRef.current },
+        });
+        pageRef.current = null;
+        dataRef.current = null;
       } else {
         history.push("/");
       }

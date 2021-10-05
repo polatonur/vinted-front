@@ -1,13 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import "../containers/Home.css";
 import TwoLabeledRange from "./TwoLabeledRange";
 import "./header.css";
+import Login from "./Login";
+import Signup from "./Signup";
 import MenuMobile from "./MenuMobile";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
 const Header = ({
+  displayModalLogin,
+  displayModalSignup,
   userToken,
   setUserToken,
   setDisplayModalLogin,
@@ -16,7 +20,11 @@ const Header = ({
   setSearchedText,
   setMaxMin,
   setAscOrDesc,
+  setUser,
+  pageRef,
+  dataRef,
 }) => {
+  const history = useHistory();
   const location = useLocation();
   // console.log("location==>", location.pathname);
 
@@ -28,6 +36,14 @@ const Header = ({
     }
   };
 
+  const handleClick = () => {
+    if (userToken) {
+      history.push({ pathname: "/publish" });
+    } else {
+      pageRef.current = "/publish";
+      setDisplayModalLogin(true);
+    }
+  };
   const { ref, isComponentVisible, setIsComponentVisible } =
     useOutsideAlerter(false);
   // console.log("visib", isComponentVisible);
@@ -101,9 +117,10 @@ const Header = ({
               </button>
             </div>
           )}
-          <Link to="/publish">
-            <button className="btn-sell">Vends tes articles</button>
-          </Link>
+
+          <button onClick={handleClick} className="btn-sell">
+            Vends tes articles
+          </button>
           <MenuMobile
             userToken={userToken}
             setUserToken={setUserToken}
@@ -111,6 +128,24 @@ const Header = ({
             setDisplayModalSignup={setDisplayModalSignup}
           />
         </nav>
+        {displayModalSignup && (
+          <Signup
+            dataRef={dataRef}
+            setUser={setUser}
+            pageRef={pageRef}
+            setDisplayModalSignup={setDisplayModalSignup}
+            setDisplayModalLogin={setDisplayModalLogin}
+          />
+        )}
+        {displayModalLogin && (
+          <Login
+            pageRef={pageRef}
+            dataRef={dataRef}
+            setDisplayModalSignup={setDisplayModalSignup}
+            setUser={setUser}
+            setDisplayModalLogin={setDisplayModalLogin}
+          />
+        )}
       </div>
       {location.pathname === "/" && (
         <div className="filter-search-hidden">

@@ -1,7 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./paiement.css";
 const stripePromise = loadStripe(
@@ -9,11 +8,6 @@ const stripePromise = loadStripe(
 );
 const Paiement = ({ userToken, setDisplayModalLogin }) => {
   const location = useLocation();
-  const history = useHistory();
-  if (!userToken) {
-    setDisplayModalLogin(true);
-    history.push("/");
-  }
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm data={location.state.data} />

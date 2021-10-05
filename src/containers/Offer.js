@@ -1,11 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import "./Offer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ActivityIndicator from "../components/ActivityIndicator";
 
-const Offer = () => {
+const Offer = ({ dataRef, pageRef, userToken, setDisplayModalLogin }) => {
   const { id } = useParams();
+  const history = useHistory();
   const [offerData, setOfferData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,6 +24,16 @@ const Offer = () => {
     };
     fetchData();
   }, [id]);
+
+  const handleClick = () => {
+    if (userToken) {
+      history.push({ pathname: "/paiement", state: { data: offerData } });
+    } else {
+      pageRef.current = "/paiement";
+      dataRef.current = offerData;
+      setDisplayModalLogin(true);
+    }
+  };
 
   return isLoading ? (
     <ActivityIndicator height={"calc(100vh - 121px)"} />
@@ -56,9 +67,7 @@ const Offer = () => {
               <p>{offerData.product_name}</p>
               <p>{offerData.product_description}</p>
               <p>{offerData.owner.account.username}</p>
-              <Link to={{ pathname: "/paiement", state: { data: offerData } }}>
-                <button>Acheter</button>
-              </Link>
+              <button onClick={handleClick}>Acheter</button>
             </div>
           </div>
         </main>

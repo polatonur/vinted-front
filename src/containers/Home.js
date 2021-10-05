@@ -4,24 +4,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../assets/img/img-hero.jpg";
 import imgDecor from "../assets/img/img-decoration.svg";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
 import Pagination from "../components/Pagination";
 import ActivityIndicator from "../components/ActivityIndicator";
 import "../components/hero.css";
 
-const Home = ({
-  displayModalLogin,
-  displayModalSignup,
-  setDisplayModalLogin,
-  setDisplayModalSignup,
-  setUser,
-  searchedText,
-  ascOrDesc,
-  maxMin,
-  displayPublish,
-  setDisplayPublish,
-}) => {
+const Home = ({ searchedText, ascOrDesc, maxMin }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState();
   const [activePage, setActivePage] = useState(1);
@@ -108,24 +95,6 @@ const Home = ({
           );
         })}
       </main>
-      {displayModalSignup && (
-        <Signup
-          displayPublish={displayPublish}
-          setDisplayPublish={setDisplayPublish}
-          setUser={setUser}
-          setDisplayModalSignup={setDisplayModalSignup}
-          setDisplayModalLogin={setDisplayModalLogin}
-        />
-      )}
-      {displayModalLogin && (
-        <Login
-          displayPublish={displayPublish}
-          setDisplayPublish={setDisplayPublish}
-          setDisplayModalSignup={setDisplayModalSignup}
-          setUser={setUser}
-          setDisplayModalLogin={setDisplayModalLogin}
-        />
-      )}
       <Pagination
         count={offers.count}
         activePage={activePage}
