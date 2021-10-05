@@ -4,15 +4,8 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./publish.css";
 
-const Publish = ({ userToken, setDisplayModalLogin, setDisplayPublish }) => {
+const Publish = ({ userToken }) => {
   const history = useHistory();
-
-  if (!userToken) {
-    setDisplayPublish(false);
-    setDisplayModalLogin(true);
-
-    history.push("/");
-  }
   const [pbTitle, setPbTitle] = useState("");
   const [pbDescription, setPbDescription] = useState("");
   const [pbBrand, setPbBrand] = useState("");

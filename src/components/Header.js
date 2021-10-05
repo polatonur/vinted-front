@@ -117,11 +117,11 @@ const Header = ({
               </button>
             </div>
           )}
-
           <button onClick={handleClick} className="btn-sell">
             Vends tes articles
           </button>
           <MenuMobile
+            handleClick={handleClick}
             userToken={userToken}
             setUserToken={setUserToken}
             setDisplayModalLogin={setDisplayModalLogin}

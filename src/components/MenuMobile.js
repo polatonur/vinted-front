@@ -9,6 +9,7 @@ const MenuMobile = ({
   setUserToken,
   setDisplayModalLogin,
   setDisplayModalSignup,
+  handleClick,
 }) => {
   const [displayMenu, setDisplayMenu] = useState(false);
   return (
@@ -39,12 +40,15 @@ const MenuMobile = ({
               <span className="header_link_1">Home</span>
             </li>
           </Link>
-          <Link onClick={() => setDisplayMenu(false)} to="/publish">
-            <li>
-              {" "}
-              <span className="header_link_1">Vends tes articles</span>
-            </li>
-          </Link>
+          <li
+            onClick={() => {
+              handleClick();
+              setDisplayMenu(false);
+            }}
+          >
+            {" "}
+            <span className="header_link_1">Vends tes articles</span>
+          </li>
 
           {userToken ? (
             <>
