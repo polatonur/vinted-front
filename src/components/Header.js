@@ -43,7 +43,7 @@ const Header = ({
   return (
     <header
       style={{ height: location.pathname !== "/" && "60px" }}
-      className="container"
+      // className="container"
     >
       <div className="upper-header">
         <Link to="/">

@@ -1,10 +1,12 @@
 /*----------------------Header---------------------------- */
 header {
-  margin: 0 10px;
+  /* padding: 0 10px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 120px;
+  margin: 0 auto;
+  max-width: 1280px;
 }
 header .upper-header {
   width: 100%;
@@ -248,7 +250,7 @@ header .filter-search-hidden .filter > span {
   }
   header .upper-header {
     height: 60px;
-    border-bottom: 2px solid rgb(168, 167, 167);
+    border-bottom: 2px solid #2baeb7;
   }
   header .upper-header .filter-search {
     display: none;
@@ -306,11 +308,11 @@ header .filter-search-hidden .filter > span {
     font-size: 1rem;
     cursor: pointer;
     padding: 5px;
-    background-color: lightgray;
     border-radius: 5px;
+    font-family: "Maison neue book";
   }
   header .filter-search-hidden .filter > span:hover {
-    background-color: rgb(165, 162, 162);
+    background-color: rgb(198, 198, 198);
   }
   .filter > span:last-child {
     width: max-content;
