@@ -5,7 +5,7 @@ import "react-input-range/lib/css/index.css";
 
 const TwoLabeledRange = ({ setMaxMin }) => {
   const [state, setState] = useState({ value: { min: 0, max: 500 } });
-
+  console.log(state.value);
   return (
     <InputRange
       formatLabel={(value) => `${value}€`}
