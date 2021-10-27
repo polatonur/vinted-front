@@ -64,7 +64,6 @@
 - Rate reviews
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_rating.gif?raw=true)
 - Reusable pagination component
   <br/>
   <br/>
