@@ -3,11 +3,11 @@
 <h1 align="center">Used Tech Stacks</h1>
 <p align="center">
     <img src="https://github.com/polatonur/readme_pics/blob/master/react.svg?raw=true" alt="Logo" width="80" height="80">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src=https://github.com/polatonur/readme_pics/blob/master/react-router.png?raw=true" alt="Logo" width="80" height="80"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src=https://github.com/polatonur/readme_pics/blob/master/stripe.svg?raw=true" alt="Logo" width="80" height="80"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://github.com/polatonur/readme_pics/blob/master/mongoDB.svg?raw=true" alt="Logo" width="180" height="80">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://github.com/polatonur/readme_pics/blob/master/cloudinary.png?raw=true" alt="Logo" width="280" height="80">
 
-  <h3 align="center">Game collection App created with react</h3>
+  <h3 align="center">Vinted Like E-Commerce App Created With React</h3>
 
   <p align="center">
     <br />
@@ -47,19 +47,20 @@
 <p align="center">  <img src="/src/assets/img/logo.png" alt="Logo" width="280" height="80"> </p>
 
 - Filter results by price and title
-  <!-- <br/>
-  <br/> -->
-  <p align="center">  <img src="https://github.com/polatonur/readme_pics/blob/master/gamepad_login.png?raw=true" alt="Logo" width="400" height="250"> &nbsp;&nbsp; <img src="https://github.com/polatonur/readme_pics/blob/master/gamepad_signup.png?raw=true" alt="Logo" width="400" height="250"> </p>
+  <br/>
+  <br/>
+  ![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_main.gif?raw=true)
+
 - Post yout items and sell them, add photos and details
 - Payment Page with stripe
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_filter.gif?raw=true)
+  ![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_payment.gif?raw=true)
 
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_pagination.gif?raw=true)
 - Responsive design for mobile devices
+![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_responsive.gif?raw=true) 
 
 ### Built With
 
