@@ -49,18 +49,21 @@
 - Filter results by price and title
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_main.gif?raw=true)
+  <img src="https://github.com/polatonur/readme_pics/blob/master/vinted_main.gif?raw=true" width="70%" height="70%"/>
+
 
 - Post yout items and sell them, add photos and details
 - Payment Page with stripe
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_payment.gif?raw=true)
+  <img src="https://github.com/polatonur/readme_pics/blob/master/vinted_payment.gif?raw=true" width="50%" height="50%"/>
+
 
   <br/>
   <br/>
 - Responsive design for mobile devices
-![alt text](https://github.com/polatonur/readme_pics/blob/master/vinted_responsive.gif?raw=true) 
+<img src="https://github.com/polatonur/readme_pics/blob/master/vinted_responsive.gif?raw=true" width="50%" height="50%"/>
+
 
 ### Built With
 
