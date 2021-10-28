@@ -7,7 +7,7 @@
     <img src="https://github.com/polatonur/readme_pics/blob/master/mongoDB.svg?raw=true" alt="Logo" width="180" height="80">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://github.com/polatonur/readme_pics/blob/master/cloudinary.png?raw=true" alt="Logo" width="280" height="80">
 
-  <h3 align="center">Vinted Like E-Commerce App Created With React</h3>
+  <h3 align="center">Vinted Like E-Commerce App Created With React And Stripe</h3>
 
   <p align="center">
     <br />
