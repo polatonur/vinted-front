@@ -48,8 +48,10 @@
 
 - Login, signup, account pages
   <!-- <br/>
+
   <br/> -->
   <p align="center">  <img src="https://github.com/polatonur/readme_pics/blob/master/gamepad_login.png?raw=true" alt="Logo" width="400" height="250"> &nbsp;&nbsp; <img src="https://github.com/polatonur/readme_pics/blob/master/gamepad_signup.png?raw=true" alt="Logo" width="400" height="250"> </p>
+
 - Create your game collection
 - Add review about a game
 - Search a game by name and use autocomplate
@@ -95,9 +97,11 @@ Download App and install packages
 ### Usage
 
 - npm
+
   ```sh
   yarn start
   ```
+
   Runs the app in the development mode.<br />
   Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
