@@ -1,21 +1,20 @@
-<!-- PROJECT LOGO -->
 <br />
 <h1 align="center">Used Tech Stacks</h1>
 <p align="center">
     <img src="https://github.com/polatonur/readme_pics/blob/master/react.svg?raw=true" alt="Logo" width="80" height="80">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src=https://github.com/polatonur/readme_pics/blob/master/react-router.png?raw=true" alt="Logo" width="80" height="80"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src=https://github.com/polatonur/readme_pics/blob/master/stripe.svg?raw=true" alt="Logo" width="80" height="80"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://github.com/polatonur/readme_pics/blob/master/mongoDB.svg?raw=true" alt="Logo" width="180" height="80">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://github.com/polatonur/readme_pics/blob/master/cloudinary.png?raw=true" alt="Logo" width="280" height="80">
 
-  <h3 align="center">Game collection App created with react</h3>
+  <h3 align="center">Vinted Like E-Commerce App Created With React And Stripe</h3>
 
   <p align="center">
     <br />
     <br />
     <br />
-    <a href="https://gamepad-clone-onur.netlify.app/">View Demo</a>
+    <a href="https://vinted-like-onur.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/polatonur/gamepad-front/issues">Report Bug</a>
+    <a href="https://github.com/polatonur/vinted-front/issues">Report Bug</a>
   </p>
 </p>
 
@@ -46,6 +45,8 @@
 
 <p align="center">  <img src="/src/assets/img/logo.png" alt="Logo" width="280" height="80"> </p>
 
+<<<<<<< HEAD
+
 - Login, signup, account pages
   <!-- <br/>
 
@@ -54,24 +55,25 @@
 
 - Create your game collection
 - Add review about a game
-- Search a game by name and use autocomplate
+
+- # Search a game by name and use autocomplate
+
+- Filter results by price and title
+
+> > > > > > > 707fdc3c6b18a35bd8821a7e03429d6dfe2e64f0
+> > > > > > > <br/> > > > > > > > <br/> > > > > > > > <img src="https://github.com/polatonur/readme_pics/blob/master/vinted_main.gif?raw=true" width="70%" height="70%"/>
+
+- Post yout items and sell them, add photos and details
+- Payment Page with stripe
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_autocomplate.gif?raw=true)
-- Filter games by platform and type,
+  <img src="https://github.com/polatonur/readme_pics/blob/master/vinted_payment.gif?raw=true" width="50%" height="50%"/>
+
   <br/>
   <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_filter.gif?raw=true)
-- Sort games
-- Rate reviews
-  <br/>
-  <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_rating.gif?raw=true)
-- Reusable pagination component
-  <br/>
-  <br/>
-  ![alt text](https://github.com/polatonur/readme_pics/blob/master/gamepad_pagination.gif?raw=true)
-- The app is fully responsive.
+
+- Responsive design for mobile devices
+  <img src="https://github.com/polatonur/readme_pics/blob/master/vinted_responsive.gif?raw=true" width="50%" height="50%"/>
 
 ### Built With
 
@@ -79,6 +81,7 @@
 - React-Router-Dom
 - MongoDB
 - Clouadinary
+- Stripe
 
 <!-- GETTING STARTED -->
 
@@ -111,4 +114,4 @@ Download App and install packages
 
 Onur POLAT
 
-Project Link: [https://github.com/polatonur/gamepad-front](https://github.com/polatonur/gamepad-front/)
+Project Link: [https://github.com/polatonur/vinted-front/](https://github.com/polatonur/vinted-front/)

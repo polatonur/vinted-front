@@ -70,10 +70,12 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home
+            pageRef={pageRef}
             userToken={userToken}
             ascOrDesc={ascOrDesc}
             maxMin={maxMin}
             searchedText={searchedText}
+            setDisplayModalLogin={setDisplayModalLogin}
           />
         </Route>
         <Route path="/publish">

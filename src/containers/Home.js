@@ -1,18 +1,26 @@
 import "./Home.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import heroImg from "../assets/img/img-hero.jpg";
 import imgDecor from "../assets/img/img-decoration.svg";
 import Pagination from "../components/Pagination";
 import ActivityIndicator from "../components/ActivityIndicator";
 import "../components/hero.css";
 
-const Home = ({ searchedText, ascOrDesc, maxMin }) => {
+const Home = ({
+  searchedText,
+  ascOrDesc,
+  maxMin,
+  userToken,
+  pageRef,
+  setDisplayModalLogin,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState();
   const [activePage, setActivePage] = useState(1);
-  // console.log(window.innerWidth);
+
+  const history = useHistory();
 
   const getPageLimit = () => {
     const width = window.innerWidth;
@@ -48,6 +56,14 @@ const Home = ({ searchedText, ascOrDesc, maxMin }) => {
     fetchData();
   }, [activePage, ascOrDesc, maxMin, searchedText]);
 
+  const handleClickSell = () => {
+    if (userToken) {
+      history.push({ pathname: "/publish" });
+    } else {
+      pageRef.current = "/publish";
+      setDisplayModalLogin(true);
+    }
+  };
   return isLoading ? (
     <ActivityIndicator height={"100vh"} />
   ) : (
@@ -59,9 +75,7 @@ const Home = ({ searchedText, ascOrDesc, maxMin }) => {
         </div>
         <div className="middle-block">
           <h2>Prêts à faire du tri dans vos placards ?</h2>
-          <Link to="publish">
-            <button>Commencer à vendre</button>
-          </Link>
+          <button onClick={handleClickSell}>Commencer à vendre</button>
         </div>
       </section>
       <main className="offers container">
